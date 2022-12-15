@@ -14,7 +14,7 @@ class ZipCode extends Model
      *
      * @var string
      */
-    protected $primaryKey = 'zip_code';
+    //protected $primaryKey = 'zip_code';
 
     protected $fillable = [
         'zip_code',

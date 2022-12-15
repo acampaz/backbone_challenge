@@ -14,16 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('zip_codes', function (Blueprint $table) {
-            $table->id('zip_code');
+            $table->id();
+            $table->bigInteger('zip_code');
             $table->string('locality');
             $table->integer('fe_key');
             $table->string('fe_name');
             $table->string('fe_code');
-            $table->string('settlement_key');
+            $table->integer('settlement_key');
             $table->string('settlement_name');
             $table->string('settlement_zone_type');
             $table->string('settlement_type_name');
-            $table->string('municipality_key');
+            $table->integer('municipality_key');
             $table->string('municipality_name');
             $table->timestamps();
         });
