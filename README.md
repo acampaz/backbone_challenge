@@ -76,6 +76,7 @@ serializa a JSON.
 }
 </pre>
 <hr>
+
 ## Tecnologías utilizadas
 - php: >= 8.0.2
 - Laravel: >= 9.19
