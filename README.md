@@ -5,10 +5,11 @@
    </p>
 
 ## About this API
-<hr>
+
 Esta API, es para el reto técnico para el cargo Backend Developer en Backbone systems.
 La API replica la funcionalidad de la siguiente API:
--  https://jobs.backbonesystems.io/api/zip-codes/{zip_code}
+ 
+- https://jobs.backbonesystems.io/api/zip-codes/{zip_code}
 
 La API se desarrolló creando importando el archivo excel con la data hacia una base de datos
 MySQL, para lo cual existen 2 opciones, una es mediante un endpoint y la otra es mediante un
@@ -18,13 +19,12 @@ se procede a crear la estructura correspondiente de la respuesta del endpoint, l
 serializa a JSON.
 
 ## Funcionalidad del proyecto
-<hr>
+
 - Recibir un código postal (Mexico) y en base a este entregar los datos correspondientes del mismo
 - Importar los datos del Excel a la base de datos mediante un endpoint.
 - Importar los datos del Excel a la base de datos mediante un comando artisan.
 
 ## Ejemplo de respuesta
-<hr>
 
 <pre>
 {
@@ -75,7 +75,6 @@ serializa a JSON.
     }
 }
 </pre>
-<hr>
 
 ## Tecnologías utilizadas
 - php: >= 8.0.2
@@ -83,7 +82,6 @@ serializa a JSON.
 - MySQL: >= 5.7.24
 
 ## Otros
-<hr>
 
 Dentro del proyecto se utilizó tambien lo siguiente:
 
@@ -93,3 +91,6 @@ Dentro del proyecto se utilizó tambien lo siguiente:
 - Creación de comandos artisan
 - Importación de archivos Excel
 - PSR 12
+
+Nota: no se utilizó Form Request para validar el request, debido a que recibe sólo 1 parámetro
+por eso se utilizó el Facade Validator.
