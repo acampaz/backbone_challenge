@@ -9,13 +9,7 @@ class ZipCode extends Model
 {
     use HasFactory;
 
-    /**
-     * The primary key associated with the table.
-     *
-     * @var string
-     */
-    //protected $primaryKey = 'zip_code';
-
+    //This is the ZipCode model
     protected $fillable = [
         'zip_code',
         'locality',

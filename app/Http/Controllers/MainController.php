@@ -4,40 +4,57 @@ namespace App\Http\Controllers;
 
 use App\Models\ZipCode;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use mysql_xdevapi\Collection;
 
 class MainController extends Controller
 {
+    /**
+     * This is the main function to get the data from a given zip code
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getZipCode(Request $request)
+    {
+        try {
+            //Variables
+            $settlements = collect();
 
-    public function getZipCode(Request $request){
+            //Getting the data from DB.
+            $zipCodes = ZipCode::where('zip_code', $request->code)
+                ->get();
 
-        $zipCodes = ZipCode::where('zip_code', $request->code)
-            ->get();
+            $federal_entity = collect([
+                'key' => $zipCodes->first()->fe_key,
+                'name' => strtoupper($zipCodes->first()->fe_name),
+                'code' => $zipCodes->first()->fe_code
+            ]);
 
-        $federal_entity = collect(['key' => $zipCodes->first()->fe_key, 'name' => $zipCodes->first()->fe_name,
-            'code' => $zipCodes->first()->fe_code]);
+            $municipality = collect([
+                'key' => $zipCodes->first()->municipality_key,
+                'name' => strtoupper($zipCodes->first()->municipality_name)
+            ]);
 
-        $municipality = collect(['key' => $zipCodes->first()->municipality_key, 'name' => $zipCodes->first()->municipality_name]);
+            foreach ($zipCodes as $zipCode) {
+                $settlement = ['key' => $zipCode->settlement_key,
+                    'name' => strtoupper($zipCode->settlement_name),
+                    'zone_type' => strtoupper($zipCode->settlement_zone_type),
+                    'settlement_type' => ['name' => strtoupper($zipCode->settlement_type_name)
+                    ]];
+                $settlements->add($settlement);
+            }
 
-        $settlements = collect();
+            //Response the data mapped and serialized to JSON.
+            return response()->json([
+                'zip_code' => $zipCodes->first()->zip_code,
+                'locality' => strtoupper($zipCodes->first()->locality),
+                'federal_entity' => $federal_entity,
+                'settlements' => $settlements,
+                'municipality' => $municipality
+            ],200) ;
 
-        foreach ($zipCodes as $zipCode){
-
-            $settlement = ['key' => $zipCode->settlement_key, 'name' => $zipCode->settlement_name,
-                'zone_type' => $zipCode->settlement_zone_type,
-                'settlement_type' => ['name' => $zipCode->settlement_type_name]];
-
-            $settlements->add($settlement);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'Error Message' => $exception->getMessage()
+            ],500) ;
         }
-
-        //Response
-        return response()->json([
-            'zip_code' => $zipCodes->first()->zip_code,
-            'locality' => $zipCodes->first()->locality,
-            'federal_entity' => $federal_entity,
-            'settlements' => $settlements,
-            'municipality' => $municipality
-        ],200) ;;
     }
 }

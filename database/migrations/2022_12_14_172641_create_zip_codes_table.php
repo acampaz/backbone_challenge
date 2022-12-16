@@ -8,7 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * Migration to create zip_codes Table
      * @return void
      */
     public function up()
@@ -27,6 +27,7 @@ return new class extends Migration
             $table->integer('municipality_key');
             $table->string('municipality_name');
             $table->timestamps();
+            $table->index('zip_code');
         });
     }
 

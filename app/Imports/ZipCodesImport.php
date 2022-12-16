@@ -22,17 +22,17 @@ class ZipCodesImport implements ToModel, WithHeadingRow, WithBatchInserts, WithC
     {
         return new ZipCode([
             //Maping the data to import
-            'zip_code'=> isset($row['d_codigo']) ? $row['d_codigo'] : 'null',
-            'locality'=> isset($row['d_ciudad']) ? $row['d_ciudad'] : 'null',
-            'fe_key'=> isset($row['c_estado']) ? $row['c_estado'] : 'null',
-            'fe_name'=> isset($row['d_estado']) ? $row['d_estado'] : 'null',
-            'fe_code'=> isset($row['c_CP']) ? $row['c_CP'] : 'null',
-            'settlement_key'=> isset($row['id_asenta_cpcons']) ? $row['id_asenta_cpcons'] : 'null',
-            'settlement_name'=> isset($row['d_asenta']) ? $row['d_asenta'] : 'null',
-            'settlement_zone_type'=> isset($row['d_zona']) ? $row['d_zona'] : 'null',
-            'settlement_type_name'=> isset($row['d_tipo_asenta']) ? $row['d_tipo_asenta'] : 'null',
-            'municipality_key'=> isset($row['c_mnpio']) ? $row['c_mnpio'] : 'null',
-            'municipality_name'=> isset($row['d_mnpio']) ? $row['d_mnpio'] : 'null'
+            'zip_code'=> $row['d_codigo'] ?? 'null',
+            'locality'=> $row['d_ciudad'] ?? 'null',
+            'fe_key'=> $row['c_estado'] ?? 'null',
+            'fe_name'=> $row['d_estado'] ?? 'null',
+            'fe_code'=> $row['c_CP'] ?? 'null',
+            'settlement_key'=> $row['id_asenta_cpcons'] ?? 'null',
+            'settlement_name'=> $row['d_asenta'] ?? 'null',
+            'settlement_zone_type'=> $row['d_zona'] ?? 'null',
+            'settlement_type_name'=> $row['d_tipo_asenta'] ?? 'null',
+            'municipality_key'=> $row['c_mnpio'] ?? 'null',
+            'municipality_name'=> $row['d_mnpio'] ?? 'null'
         ]);
     }
 

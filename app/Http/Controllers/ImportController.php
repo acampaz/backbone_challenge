@@ -12,13 +12,13 @@ class ImportController extends Controller
     {
         try {
             //Here we select the file to import
-           $res =  (new ZipCodesImport)->import('CPdescarga.xls');
-             Log::info('File imported successfully!');
-             return 'File imported successfully!';
+            (new ZipCodesImport)->import('CPdescarga.xls');
+            Log::info('File imported successfully!');
+            return 'File imported successfully!';
 
         } catch (\Exception $e) {
             Log::error($e);
-            return $e;
+            return $e->getMessage();
         }
     }
 }

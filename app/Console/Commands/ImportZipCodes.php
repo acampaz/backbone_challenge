@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Imports\ZipCodesImport;
+use App\Http\Controllers\ImportController;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
 
 class ImportZipCodes extends Command
 {
@@ -29,16 +28,8 @@ class ImportZipCodes extends Command
      */
     public function handle()
     {
-        //Here we import the Excel data
-        try {
-            //Here we select the file to import
-            (new ZipCodesImport)->import('CPdescarga.xlsx');
-            Log::info('File imported successfully!');
-            return 'Success';
-
-        } catch (\Exception $e) {
-            Log::error($e);
-            return Command::FAILURE;
-        }
+        //Calling the import function from ImportController to import the data from Excel.
+        $controller = new ImportController();
+        return $controller->import();
     }
 }
