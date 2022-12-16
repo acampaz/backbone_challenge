@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ZipCode;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class MainController extends Controller
 {
@@ -17,6 +19,12 @@ class MainController extends Controller
         try {
             //Variables
             $settlements = collect();
+
+            //Validating the zipcode
+            Validator::make(
+                ['code' => $request->code],
+                ['code' => 'required|numeric|integer|min:1000'],
+            )->validate();
 
             //Getting the data from DB.
             $zipCodes = ZipCode::where('zip_code', $request->code)
