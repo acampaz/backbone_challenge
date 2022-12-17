@@ -15,7 +15,7 @@ class MainTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_main()
     {
         //Validate function status code response
         $response = $this->get('/api/zip-codes/20020');
