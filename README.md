@@ -90,6 +90,7 @@ Dentro del proyecto se utilizó tambien lo siguiente:
 - Mapeo de datos
 - Creación de comandos artisan
 - Importación de archivos Excel
+- Testing
 - PSR 12
 
 Nota: no se utilizó Form Request para validar el request, debido a que recibe sólo 1 parámetro
