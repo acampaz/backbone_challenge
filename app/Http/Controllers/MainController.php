@@ -45,7 +45,7 @@ class MainController extends Controller
                 $settlement = ['key' => $zipCode->settlement_key,
                     'name' => strtoupper($zipCode->settlement_name),
                     'zone_type' => strtoupper($zipCode->settlement_zone_type),
-                    'settlement_type' => ['name' => strtoupper($zipCode->settlement_type_name)
+                    'settlement_type' => ['name' => $zipCode->settlement_type_name
                     ]];
                 $settlements->add($settlement);
             }
