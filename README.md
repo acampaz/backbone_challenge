@@ -24,6 +24,17 @@ serializa a JSON.
 - Importar los datos del Excel a la base de datos mediante un endpoint.
 - Importar los datos del Excel a la base de datos mediante un comando artisan.
 
+## Endpoints y comando
+
+Los endpoints disponibles son:
+
+-/api/zip-codes/{zip_code} (endpoint principal)
+-/api/import (carga el archivo excel)
+
+El comando para cargar el archivo excel es el siguiente
+
+- php artisan import:codes
+
 ## Ejemplo de respuesta
 
 <pre>
@@ -90,7 +101,7 @@ Dentro del proyecto se utilizó tambien lo siguiente:
 - Mapeo de datos
 - Creación de comandos artisan
 - Importación de archivos Excel
-- Testing
+- Unit Testing
 - PSR 12
 
 Nota: no se utilizó Form Request para validar el request, debido a que recibe sólo 1 parámetro
