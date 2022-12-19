@@ -16,16 +16,16 @@ return new class extends Migration
         Schema::create('zip_codes', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('zip_code');
-            $table->string('locality');
-            $table->integer('fe_key');
-            $table->string('fe_name');
-            $table->string('fe_code');
-            $table->integer('settlement_key');
-            $table->string('settlement_name');
-            $table->string('settlement_zone_type');
-            $table->string('settlement_type_name');
-            $table->integer('municipality_key');
-            $table->string('municipality_name');
+            $table->string('locality')->nullable();
+            $table->integer('fe_key')->nullable();
+            $table->string('fe_name')->nullable();
+            $table->string('fe_code')->nullable();
+            $table->integer('settlement_key')->nullable();
+            $table->string('settlement_name')->nullable();
+            $table->string('settlement_zone_type')->nullable();
+            $table->string('settlement_type_name')->nullable();
+            $table->integer('municipality_key')->nullable();
+            $table->string('municipality_name')->nullable();
             $table->timestamps();
             $table->index('zip_code');
         });
